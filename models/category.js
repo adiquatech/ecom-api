@@ -5,4 +5,4 @@ const categorySchema = new mongoose.Schema({
   description: { type: String, trim: true }
 }, { timestamps: true });
 
-export default mongoose.model('Category', categorySchema);
+export default mongoose.model('category', categorySchema);

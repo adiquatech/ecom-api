@@ -1,0 +1,40 @@
+### Get All Categories
+GET http://localhost:3000/api/categories
+### Get All Products
+GET http://localhost:3000/api/products
+
+### Create Category
+POST http://localhost:3000/api/categories
+Content-Type: application/json
+
+{
+  "name": "Books",
+  "description": "Fiction and non-fiction"
+}
+### Create Product (use category ID from above)
+POST http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+  "name": "Cs341",
+  "description": "Introduction to web services (Api)",
+  "price": 75.99,
+  "stock": 50,
+  "category": "69186b63b01c902e1a17bc04",
+  "sku": "BOOK-CC-002",
+  "weight": 200
+}
+### Update Product (PUT)
+PUT http://localhost:3000/api/products/69187a27a06fde45a484bb93
+Content-Type: application/json
+
+{"name": "Cs341",
+  "description": "Introduction to web services (Api)",
+  "price": 75.99,
+  "stock": 50,
+  "category": "69186b63b01c902e1a17bc04",
+  "sku": "BOOK-CC-002",
+  "weight": 300
+}
+### Delete Product
+DELETE http://localhost:3000/api/products/69186b63b01c902e1a17bc04
