@@ -1,0 +1,63 @@
+### Home - Check if API is live
+GET https://ecom-api-lcxh.onrender.com/
+
+### Swagger UI Documentation
+GET https://ecom-api-lcxh.onrender.com/api-docs
+
+### Get All Categories
+GET https://ecom-api-lcxh.onrender.com/api/categories
+
+### Get All Products (with flattened category)
+GET https://ecom-api-lcxh.onrender.com/api/products
+
+### Create a new Category
+POST https://ecom-api-lcxh.onrender.com/api/categories
+Content-Type: application/json
+
+{
+  "name": "Furniture",
+  "description": "Tables, chairs, sofas and home furniture"
+}
+
+### Create a new Product (replace category ID with the one from the response above)
+POST https://ecom-api-lcxh.onrender.com/api/products
+Content-Type: application/json
+
+{
+  "name": "Luxury Sofa",
+  "description": "Premium leather sofa with recliner",
+  "price": 2500.00,
+  "stock": 8,
+  "category": "REPLACE_WITH_CATEGORY_ID_HERE",
+  "weight": 45000,
+  "dimensions": "200x90x95 cm"
+}
+
+### Get Single Product (replace ID)
+GET https://ecom-api-lcxh.onrender.com/api/products/REPLACE_WITH_PRODUCT_ID
+
+### Update Product - Full replace (PUT)
+PUT https://ecom-api-lcxh.onrender.com/api/products/REPLACE_WITH_PRODUCT_ID
+Content-Type: application/json
+
+{
+  "name": "Updated Luxury Sofa",
+  "description": "Now with cup holders!",
+  "price": 2799.99,
+  "stock": 5,
+  "category": "REPLACE_WITH_CATEGORY_ID",
+  "weight": 46000,
+  "dimensions": "210x95x100 cm"
+}
+
+### Update Product - Partial (PATCH) - optional if you added PATCH route
+PATCH https://ecom-api-lcxh.onrender.com/api/products/REPLACE_WITH_PRODUCT_ID
+Content-Type: application/json
+
+{
+  "price": 2599.99,
+  "stock": 12
+}
+
+### Delete Product
+DELETE https://ecom-api-lcxh.onrender.com/api/products/REPLACE_WITH_PRODUCT_ID
