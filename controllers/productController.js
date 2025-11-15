@@ -1,14 +1,24 @@
 import Product from '../models/product.js';
 import { catchAsync, notFound } from '../utils/utils.js';
 
+// Product details formatter to include category info
+const productDetails = (product) => {
+  const obj = product.toObject();
+  obj.category_id = obj.category?._id || null;
+  obj.category_name = obj.category?.name || null;
+  delete obj.category; 
+  return obj;
+};
+
 export const createProduct = catchAsync(async (req, res) => {
-  const product = await Product.create(req.body);
-  res.formattedSuccess(product, 201);});
+  const product = await Product.create(req.body).then(p => p.populate('category'));
+  res.formattedSuccess(productDetails(product), 201);
+});
 
 export const getProducts = catchAsync(async (req, res) => {
-  const products = await Product.find().populate('category', 'name');
-  res.formattedSuccess(products);
-  // res.json({ success: true, count: products.length, data: products });
+  const products = await Product.find().populate('category');
+  const formatted = products.map(productDetails);
+  res.formattedSuccess(formatted);
 });
 
 export const getProduct = catchAsync(async (req, res) => {

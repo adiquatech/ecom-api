@@ -2,7 +2,7 @@ import category from '../models/category.js';
 import { catchAsync } from '../utils/utils.js';
 
 export const createCategory = catchAsync(async (req, res) => {
-  const category = await Category.create(req.body);
+  const categories = await category.create(req.body);
   res.formattedSuccess(categories, 201);
 });
 
