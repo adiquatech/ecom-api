@@ -11,6 +11,11 @@ connectDB();
 const app = express();
 app.use(express.json());
 
+// Home route
+app.get('/', (req, res) => {
+  res.send('E-commerce API - Week 3 and 4');
+});
+
 // Routes
 app.use('/api/products', productRoutes);
 app.use('/api/categories', categoryRoutes);
