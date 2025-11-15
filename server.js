@@ -19,4 +19,4 @@ app.use('/api/categories', categoryRoutes);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`EcomAPI running on port ${PORT}`));
+app.listen(PORT, () => console.log(`EcomAPI running on http://localhost:${PORT}`));
