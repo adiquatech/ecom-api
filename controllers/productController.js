@@ -1,12 +1,13 @@
+// controllers/productController.js
 import Product from '../models/product.js';
 import { catchAsync, notFound } from '../utils/utils.js';
 
-// Product details formatter to include category info
+// Flatten product: category_id + category_name
 const productDetails = (product) => {
   const obj = product.toObject();
   obj.category_id = obj.category?._id || null;
   obj.category_name = obj.category?.name || null;
-  delete obj.category; 
+  delete obj.category;
   return obj;
 };
 
@@ -23,10 +24,8 @@ export const getProducts = catchAsync(async (req, res) => {
 
 export const getProduct = catchAsync(async (req, res) => {
   const product = await Product.findById(req.params.id).populate('category');
-  if (!product) throw new Error('Product not found');
-  res.formattedSuccess(products);
-  // res.json({ success: true, data: product });
-
+  if (!product) notFound('Product');
+  res.formattedSuccess(productDetails(product)); // ← Fixed: was 'products'
 });
 
 export const updateProduct = catchAsync(async (req, res) => {
@@ -37,7 +36,7 @@ export const updateProduct = catchAsync(async (req, res) => {
   ).populate('category');
 
   if (!product) notFound('Product');
-  res.formattedSuccess(product);
+  res.formattedSuccess(productDetails(product));
 });
 
 export const deleteProduct = catchAsync(async (req, res) => {

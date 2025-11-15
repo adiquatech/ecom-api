@@ -16,13 +16,12 @@ POST http://localhost:3000/api/products
 Content-Type: application/json
 
 {
-  "name": "Chair",
-  "description": "Comfortable wooden chair",
-  "price": 750.99,
+  "name": "Table",
+  "description": "Wooden dining table",
+  "price": 2200.99,
   "stock": 15,
   "category": "691894c79ce1c1b8f97d66ab",
-  "sku": "Furnitures-001",
-  "weight": 950
+  "weight": 1550
 }
 ### Update Product (PUT)
 PUT http://localhost:3000/api/products/69187a27a06fde45a484bb93

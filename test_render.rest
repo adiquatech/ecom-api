@@ -28,16 +28,16 @@ Content-Type: application/json
   "description": "Premium leather sofa with recliner",
   "price": 2500.00,
   "stock": 8,
-  "category": "REPLACE_WITH_CATEGORY_ID_HERE",
+  "category": "6918a676a851b8c8f2ca0680",
   "weight": 45000,
   "dimensions": "200x90x95 cm"
 }
 
 ### Get Single Product (replace ID)
-GET https://ecom-api-lcxh.onrender.com/api/products/REPLACE_WITH_PRODUCT_ID
+GET https://ecom-api-lcxh.onrender.com/api/products/
 
 ### Update Product - Full replace (PUT)
-PUT https://ecom-api-lcxh.onrender.com/api/products/REPLACE_WITH_PRODUCT_ID
+PUT https://ecom-api-lcxh.onrender.com/api/products/6918a676a851b8c8f2ca0680
 Content-Type: application/json
 
 {
