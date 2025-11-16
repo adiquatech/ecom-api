@@ -16,24 +16,25 @@ POST http://localhost:3000/api/products
 Content-Type: application/json
 
 {
+  "name": "Rich daddy poor daddy",
+  "description": "A book about financial education",
+  "price": 100,
+  "stock": 5,
+  "category": "6919cb626f307bafa9270d20",
+  "weight": 10000
+}
+### Update Product (PUT)
+PUT http://localhost:3000/api/products/6919cb126f307bafa9270d1a
+Content-Type: application/json
+
+{
   "name": "Chair",
   "description": "Comfortable wooden chair",
   "price": 100,
   "stock": 5,
-  "category": "6919c090e5e13711d2f2369f",
+  "category": "6919ecab146009fa148f39e1",
   "weight": 10000,
   "sku": "CHAIR-001"
-}
-### Update Product (PUT)
-PUT http://localhost:3000/api/products/6919b9b4de89462c79d9b01c
-Content-Type: application/json
-
-{"name": "Cs342",
-  "description": "Introduction to web services (Api_development)",
-  "price": 75.99,
-  "stock": 50,
-  "category": "6918b1ada7e8e5cc95fb7f97",
-  "weight": 300
 }
 ### Delete Product
 DELETE http://localhost:3000/api/products/6918b12aa7e8e5cc95fb7f92

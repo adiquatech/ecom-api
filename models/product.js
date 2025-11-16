@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema(
     price: { type: Number, required: true, min: 0 },
     stock: { type: Number, required: true, min: 0 },
     category: { type: mongoose.Schema.Types.ObjectId, ref: 'category', required: true },
-    sku: { type: String, required: true, unique: true, trim: true },
+    sku: { type: String, unique: true, trim: true },
     imageUrl: { type: String, default: '' },
     weight: { type: Number, min: 0 },
     dimensions: { type: String },
@@ -28,15 +28,25 @@ const productSchema = new mongoose.Schema(
 );
 
 // Auto-Generate sku Before Save
+// AUTO-GENERATE UNIQUE SKU (FIXED)
 productSchema.pre('save', async function (next) {
   if (this.isNew && !this.sku) {
-    let sku;
     const base = this.name.replace(/\s+/g, '').slice(0, 4).toUpperCase();
-    do {
-      const random = Math.floor(1000 + Math.random() * 9000);
-      sku = `${base}-${random}`;
-    } while (await this.constructor.findOne({ sku }));
-    this.sku = sku;
+    let attempts = 0;
+    const maxAttempts = 10;
+
+    while (attempts < maxAttempts) {
+      const random = String(Math.floor(1000 + Math.random() * 9000)).padStart(4, '0');
+      const sku = `${base}-${random}`;
+
+      const existing = await this.model('product').findOne({ sku });
+      if (!existing) {
+        this.sku = sku;
+        return next();
+      }
+      attempts++;
+    }
+    return next(new Error('Failed to generate unique SKU'));
   }
   next();
 });
