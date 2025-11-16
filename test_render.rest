@@ -6,10 +6,8 @@ GET https://ecom-api-lcxh.onrender.com/api-docs
 
 ### Get All Categories
 GET https://ecom-api-lcxh.onrender.com/api/categories
-
-### Get All Products (with flattened category)
+### Get All Products 
 GET https://ecom-api-lcxh.onrender.com/api/products
-
 ### Create a new Category
 POST https://ecom-api-lcxh.onrender.com/api/categories
 Content-Type: application/json
@@ -19,7 +17,7 @@ Content-Type: application/json
   "description": "Tables, chairs, sofas and home furniture"
 }
 
-### Create a new Product (replace category ID with the one from the response above)
+### Create a new Product
 POST https://ecom-api-lcxh.onrender.com/api/products
 Content-Type: application/json
 
@@ -28,28 +26,21 @@ Content-Type: application/json
   "description": "Large capacity freezer",
   "price": 2500.00,
   "stock": 8,
-  "category": "6918aa8fc37c9ee07ea4ba48",
+  "category": "6919cb7f6f307bafa9270d22",
   "weight": 45000,
-  "dimensions": "200x90x95 cm"
+  "dimensions": "200x90x95 cm",
+  "sku": "FRZ-4500"
 }
-
 ### Get Single Product (replace ID)
 GET https://ecom-api-lcxh.onrender.com/api/products/
-
 ### Update Product - Full replace (PUT)
-PUT https://ecom-api-lcxh.onrender.com/api/products/6918a676a851b8c8f2ca0680
+PUT https://ecom-api-lcxh.onrender.com/api/products/6919cb126f307bafa9270d1a
 Content-Type: application/json
 
 {
-  "name": "Updated Luxury Sofa",
-  "description": "Now with cup holders!",
-  "price": 2799.99,
-  "stock": 5,
-  "category": "REPLACE_WITH_CATEGORY_ID",
-  "weight": 46000,
-  "dimensions": "210x95x100 cm"
+  "name": "New-Chair",
+  "category": "6919ecab146009fa148f39e1",
 }
-
 ### Update Product - Partial (PATCH) - optional if you added PATCH route
 PATCH https://ecom-api-lcxh.onrender.com/api/products/REPLACE_WITH_PRODUCT_ID
 Content-Type: application/json
@@ -60,4 +51,6 @@ Content-Type: application/json
 }
 
 ### Delete Product
-DELETE https://ecom-api-lcxh.onrender.com/api/products/REPLACE_WITH_PRODUCT_ID
+DELETE https://ecom-api-lcxh.onrender.com/api/products/6919c09de5e13711d2f236a1
+### Delete Category
+DELETE https://ecom-api-lcxh.onrender.com/api/categories/
