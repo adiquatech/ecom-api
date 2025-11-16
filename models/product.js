@@ -28,7 +28,6 @@ const productSchema = new mongoose.Schema(
 );
 
 // Auto-Generate sku Before Save
-// AUTO-GENERATE UNIQUE SKU (FIXED)
 productSchema.pre('save', async function (next) {
   if (this.isNew && !this.sku) {
     const base = this.name.replace(/\s+/g, '').slice(0, 4).toUpperCase();

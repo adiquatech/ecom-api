@@ -33,8 +33,7 @@ Content-Type: application/json
   "price": 100,
   "stock": 5,
   "category": "6919ecab146009fa148f39e1",
-  "weight": 10000,
-  "sku": "CHAIR-001"
+  "weight": 10000
 }
 ### Delete Product
 DELETE http://localhost:3000/api/products/6918b12aa7e8e5cc95fb7f92

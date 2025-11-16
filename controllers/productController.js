@@ -2,7 +2,7 @@
 import Product from '../models/product.js';
 import { catchAsync, notFound } from '../utils/utils.js';
 
-// Flatten product: category_id + category_name
+// Product Details Formatter
 const productDetails = (product) => {
   const obj = product.toObject();
   obj.category_id = obj.category?._id || null;
@@ -25,7 +25,7 @@ export const getProducts = catchAsync(async (req, res) => {
 export const getProduct = catchAsync(async (req, res) => {
   const product = await Product.findById(req.params.id).populate('category');
   if (!product) notFound('product');
-  res.formattedSuccess(productDetails(product)); // ← Fixed: was 'products'
+  res.formattedSuccess(productDetails(product));
 });
 
 export const updateProduct = catchAsync(async (req, res) => {
