@@ -4,8 +4,7 @@ import express from 'express';
 import connectDB from './config/db.js';
 import './models/index.js';
 import { attachResponseHelpers } from './utils/utils.js';
-import productRoutes from './routes/productRoutes.js';
-import categoryRoutes from './routes/categoryRoutes.js';
+import routes from './routes/index.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger_output.json'with { type: 'json' };
@@ -21,14 +20,15 @@ app.get('/', (req, res) => {
 });
 
 // Api Routes
-app.use('/api/products', productRoutes);
-app.use('/api/categories', categoryRoutes);
+app.use('/api', routes);
+
+//Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 // Error Handler
 app.use(errorHandler);
 
-//Swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 const PORT = process.env.PORT || 3000;

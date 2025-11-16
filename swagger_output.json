@@ -11,7 +11,7 @@
     "https"
   ],
   "paths": {
-    "/": {
+    "/api/products/": {
       "get": {
         "description": "",
         "responses": {
@@ -29,7 +29,7 @@
         }
       }
     },
-    "/{id}": {
+    "/api/products/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -75,6 +75,24 @@
         "responses": {
           "default": {
             "description": ""
+          }
+        }
+      }
+    },
+    "/api/categories/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "responses": {
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
