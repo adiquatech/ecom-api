@@ -8,8 +8,8 @@ POST http://localhost:3000/api/categories
 Content-Type: application/json
 
 {
-  "name": "Food & Beverages",
-  "description": "Category for food and drink items"
+  "name": "Electronics",
+  "description": "Devices and gadgets"
 }
 ### Create Product (use category ID from above)
 POST http://localhost:3000/api/products
@@ -21,7 +21,8 @@ Content-Type: application/json
   "price": 100,
   "stock": 5,
   "category": "6919c090e5e13711d2f2369f",
-  "weight": 10000
+  "weight": 10000,
+  "sku": "CHAIR-001"
 }
 ### Update Product (PUT)
 PUT http://localhost:3000/api/products/6919b9b4de89462c79d9b01c
