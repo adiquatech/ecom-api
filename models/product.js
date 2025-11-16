@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema(
     description: { type: String, required: true },
     price: { type: Number, required: true, min: 0 },
     stock: { type: Number, required: true, min: 0 },
-    category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
+    category: { type: mongoose.Schema.Types.ObjectId, ref: 'category', required: true },
     imageUrl: { type: String, default: '' },
     weight: { type: Number, min: 0 },
     dimensions: { type: String },
@@ -26,4 +26,4 @@ const productSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model('Product', productSchema);
+export default mongoose.model('product', productSchema);

@@ -24,7 +24,7 @@ export const getProducts = catchAsync(async (req, res) => {
 
 export const getProduct = catchAsync(async (req, res) => {
   const product = await Product.findById(req.params.id).populate('category');
-  if (!product) notFound('Product');
+  if (!product) notFound('product');
   res.formattedSuccess(productDetails(product)); // ← Fixed: was 'products'
 });
 
@@ -35,12 +35,12 @@ export const updateProduct = catchAsync(async (req, res) => {
     { new: true, runValidators: true }
   ).populate('category');
 
-  if (!product) notFound('Product');
+  if (!product) notFound('product');
   res.formattedSuccess(productDetails(product));
 });
 
 export const deleteProduct = catchAsync(async (req, res) => {
   const product = await Product.findByIdAndDelete(req.params.id);
-  if (!product) notFound('Product');
+  if (!product) notFound('product');
   res.formattedSuccess({});
 });

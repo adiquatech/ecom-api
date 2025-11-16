@@ -2,4 +2,4 @@
 import './category.js';
 import './product.js';
 
-console.log('Models loaded: Category, Product');
+console.log('Models loaded: category, product');

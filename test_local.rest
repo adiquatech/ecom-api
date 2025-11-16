@@ -8,32 +8,31 @@ POST http://localhost:3000/api/categories
 Content-Type: application/json
 
 {
-  "name": "Furnitures",
-  "description": "Furniture products including tables, chairs, and sofas."
+  "name": "Food & Beverages",
+  "description": "Category for food and drink items"
 }
 ### Create Product (use category ID from above)
 POST http://localhost:3000/api/products
 Content-Type: application/json
 
 {
-  "name": "Table",
-  "description": "Wooden dining table",
-  "price": 2200.99,
-  "stock": 15,
-  "category": "691894c79ce1c1b8f97d66ab",
-  "weight": 1550
+  "name": "Chair",
+  "description": "Comfortable wooden chair",
+  "price": 100,
+  "stock": 5,
+  "category": "6919c090e5e13711d2f2369f",
+  "weight": 10000
 }
 ### Update Product (PUT)
-PUT http://localhost:3000/api/products/69187a27a06fde45a484bb93
+PUT http://localhost:3000/api/products/6919b9b4de89462c79d9b01c
 Content-Type: application/json
 
-{"name": "Cs341",
-  "description": "Introduction to web services (Api)",
+{"name": "Cs342",
+  "description": "Introduction to web services (Api_development)",
   "price": 75.99,
   "stock": 50,
-  "category": "69186b63b01c902e1a17bc04",
-  "sku": "BOOK-CC-002",
+  "category": "6918b1ada7e8e5cc95fb7f97",
   "weight": 300
 }
 ### Delete Product
-DELETE http://localhost:3000/api/products/69186b63b01c902e1a17bc04
+DELETE http://localhost:3000/api/products/6918b12aa7e8e5cc95fb7f92

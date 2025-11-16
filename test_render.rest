@@ -24,11 +24,11 @@ POST https://ecom-api-lcxh.onrender.com/api/products
 Content-Type: application/json
 
 {
-  "name": "Luxury Sofa",
-  "description": "Premium leather sofa with recliner",
+  "name": "Freezer",
+  "description": "Large capacity freezer",
   "price": 2500.00,
   "stock": 8,
-  "category": "6918a676a851b8c8f2ca0680",
+  "category": "6918aa8fc37c9ee07ea4ba48",
   "weight": 45000,
   "dimensions": "200x90x95 cm"
 }

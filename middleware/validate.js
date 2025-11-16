@@ -6,7 +6,6 @@ export const validateProduct = [
   body('price').isFloat({ min: 0 }).withMessage('Price ≥ 0'),
   body('stock').isInt({ min: 0 }).withMessage('Stock ≥ 0'),
   body('category').isMongoId().withMessage('Valid category ID required'),
-  body('sku').trim().isLength({ min: 3 }).withMessage('SKU required'),
 
   (req, res, next) => {
     const errors = validationResult(req);
