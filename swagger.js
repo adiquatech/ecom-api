@@ -3,12 +3,13 @@ import swaggerAutogen from 'swagger-autogen';
 
 const doc = {
   info: {
-    title: 'EcomAPI - Week 3 & 4',
+    title: 'E-commerce API - Week 3 & 4',
     description: 'Full CRUD API for Products and Categories',
     version: '1.0.0',
   },
   host: 'ecom-api-lcxh.onrender.com', 
   schemes: ['https'],
+  basePath: '/',
 };
 
 const outputFile = './swagger_output.json';
