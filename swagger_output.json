@@ -7,24 +7,8 @@
   },
   "host": "ecom-api-lcxh.onrender.com",
   "basePath": "/api",
-  "tags": [
-    {
-      "name": "Products",
-      "description": "Product endpoints"
-    },
-    {
-      "name": "Categories",
-      "description": "Category endpoints"
-    }
-  ],
   "schemes": [
     "https"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
   ],
   "paths": {
     "/products/": {
@@ -128,7 +112,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "example": "iPhone 16 Pro"
+            "example": "iPhone 16 Pro Max"
           },
           "description": {
             "type": "string",
@@ -136,7 +120,7 @@
           },
           "price": {
             "type": "number",
-            "example": 1499.99
+            "example": 1599.99
           },
           "stock": {
             "type": "integer",
@@ -148,8 +132,16 @@
           },
           "weight": {
             "type": "number",
-            "example": 200
+            "example": 240
           }
+        },
+        "example": {
+          "name": "iPhone 16 Pro Max",
+          "description": "Latest Apple flagship",
+          "price": 1599.99,
+          "stock": 50,
+          "category": "671f3e9e9d17d8c3e1234567",
+          "weight": 240
         }
       },
       "Category": {
@@ -165,6 +157,34 @@
           "description": {
             "type": "string",
             "example": "Mobile phones"
+          }
+        },
+        "example": {
+          "name": "Smartphones",
+          "description": "Mobile phones and accessories"
+        }
+      }
+    },
+    "requestBodies": {
+      "ProductRequest": {
+        "description": "Product data",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Product"
+            }
+          }
+        }
+      },
+      "CategoryRequest": {
+        "description": "Category data",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Category"
+            }
           }
         }
       }
