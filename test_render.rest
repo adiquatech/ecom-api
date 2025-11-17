@@ -18,14 +18,14 @@ POST https://ecom-api-lcxh.onrender.com/api/products
 Content-Type: application/json
 
 {
-  "name": "Freezer",
-  "description": "Large capacity freezer",
+  "name": "Blender",
+  "description": "A high-speed kitchen blender",
   "price": 2500.00,
   "stock": 8,
   "category": "6919cb7f6f307bafa9270d22",
   "weight": 45000,
   "dimensions": "200x90x95 cm",
-  "sku": "FRZ-4500"
+  "sku": "BLD-4500X"
 }
 ### Get Single Product (replace ID)
 GET https://ecom-api-lcxh.onrender.com/api/products/

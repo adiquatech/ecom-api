@@ -7,8 +7,7 @@ import { attachResponseHelpers } from './utils/utils.js';
 import routes from './routes/index.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from './swagger_output.json'with { type: 'json' };
-
+import { swaggerSpec} from './swagger.js';
 
 const app = express();
 app.use(express.json());
@@ -23,7 +22,7 @@ app.get('/', (req, res) => {
 app.use('/api', routes);
 
 //Swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 // Error Handler
