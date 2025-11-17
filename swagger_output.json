@@ -1,0 +1,173 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "E-commerce API - Week 3 & 4",
+    "description": "Full CRUD API for Products and Categories",
+    "version": "1.0.0"
+  },
+  "host": "ecom-api-lcxh.onrender.com",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Products",
+      "description": "Product endpoints"
+    },
+    {
+      "name": "Categories",
+      "description": "Category endpoints"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/products/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/categories/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Product": {
+        "type": "object",
+        "required": [
+          "name",
+          "description",
+          "price",
+          "stock",
+          "category"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "iPhone 16 Pro"
+          },
+          "description": {
+            "type": "string",
+            "example": "Latest Apple flagship"
+          },
+          "price": {
+            "type": "number",
+            "example": 1499.99
+          },
+          "stock": {
+            "type": "integer",
+            "example": 50
+          },
+          "category": {
+            "type": "string",
+            "example": "671f3e9e9d17d8c3e1234567"
+          },
+          "weight": {
+            "type": "number",
+            "example": 200
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Smartphones"
+          },
+          "description": {
+            "type": "string",
+            "example": "Mobile phones"
+          }
+        }
+      }
+    }
+  }
+}

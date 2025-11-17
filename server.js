@@ -6,11 +6,17 @@ import './models/index.js';
 import { attachResponseHelpers } from './utils/utils.js';
 import routes from './routes/index.js';
 import { errorHandler } from './middleware/errorHandler.js';
-import { swaggerSpec, swaggerUi} from './swagger.js';
+import swaggerUi from 'swagger-ui-express';
+import { createRequire } from 'module';
 
 import cors from 'cors';
 
 const app = express();
+
+const require = createRequire(import.meta.url);
+const swaggerDocument = require('./swagger_output.json');
+
+
 app.use(express.json());
 app.use(attachResponseHelpers);
 app.use(cors({ origin: '*' }));
@@ -25,7 +31,7 @@ app.use('/api', routes);
 app.use(cors());
 
 //Swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Error Handler
 app.use(errorHandler);
