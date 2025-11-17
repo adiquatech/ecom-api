@@ -6,7 +6,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/categories:
+ * /categories:
  *   post:
  *     summary: Create a new category
  *     tags: [Categories]

@@ -12,7 +12,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/products:
+ * /products:
  *   post:
  *     summary: Create a new product
  *     tags: [Products]
@@ -33,7 +33,7 @@ router.route('/')
 
 /**
  * @swagger
- * /api/products/{id}:
+ * /products/{id}:
  *   put:
  *     summary: Update a product
  *     tags: [Products]
