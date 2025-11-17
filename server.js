@@ -6,9 +6,10 @@ import './models/index.js';
 import { attachResponseHelpers } from './utils/utils.js';
 import routes from './routes/index.js';
 import { errorHandler } from './middleware/errorHandler.js';
-// import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec, swaggerUi} from './swagger.js';
+
 import cors from 'cors';
+app.use(cors({ origin: '*' }));
 
 const app = express();
 app.use(express.json());
