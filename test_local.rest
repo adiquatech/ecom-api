@@ -11,7 +11,7 @@ Content-Type: application/json
   "name": "Electronics",
   "description": "Devices and gadgets"
 }
-### Create Product (use category ID from above)
+### Create Product
 POST http://localhost:3000/api/products
 Content-Type: application/json
 
