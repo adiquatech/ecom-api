@@ -6,7 +6,7 @@
     "version": "1.0.0"
   },
   "host": "ecom-api-lcxh.onrender.com",
-  "basePath": "/api",
+  "basePath": "/",
   "schemes": [
     "https"
   ],
@@ -112,36 +112,28 @@
         "properties": {
           "name": {
             "type": "string",
-            "example": "Wireless Mouse"
+            "example": "iPhone 15"
           },
           "description": {
             "type": "string",
-            "example": "Bluetooth ergonomic mouse"
+            "example": "Latest Apple smartphone"
           },
           "price": {
             "type": "number",
-            "example": 29.99
+            "example": 999.99
           },
           "stock": {
             "type": "integer",
-            "example": 100
+            "example": 50
           },
           "category": {
             "type": "string",
-            "example": "60d5f3f3f3f3f3f3f3f3f3f3"
+            "example": "671f3e9e9d17d8c3e1234567"
           },
           "weight": {
             "type": "number",
-            "example": 85
+            "example": 180
           }
-        },
-        "example": {
-          "name": "Wireless Mouse",
-          "description": "Bluetooth ergonomic mouse",
-          "price": 29.99,
-          "stock": 100,
-          "category": "60d5f3f3f3f3f3f3f3f3f3f3",
-          "weight": 85
         }
       },
       "Category": {
@@ -156,12 +148,8 @@
           },
           "description": {
             "type": "string",
-            "example": "Phones and gadgets"
+            "example": "Phones, laptops, gadgets"
           }
-        },
-        "example": {
-          "name": "Electronics",
-          "description": "Phones and gadgets"
         }
       }
     }

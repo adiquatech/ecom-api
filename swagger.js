@@ -7,29 +7,21 @@ const doc = {
     description: 'Full CRUD API for Products and Categories',
     version: '1.0.0',
   },
-  host: 'ecom-api-lcxh.onrender.com', 
+  host: 'ecom-api-lcxh.onrender.com',
   schemes: ['https'],
-  basePath: '/api',
+  // NO basePath — we use full paths in JSDoc
   components: {
     schemas: {
       Product: {
         type: 'object',
         required: ['name', 'description', 'price', 'stock', 'category'],
         properties: {
-          name: { type: 'string', example: 'Wireless Mouse' },
-          description: { type: 'string', example: 'Bluetooth ergonomic mouse' },
-          price: { type: 'number', example: 29.99 },
-          stock: { type: 'integer', example: 100 },
-          category: { type: 'string', example: '60d5f3f3f3f3f3f3f3f3f3f3' },
-          weight: { type: 'number', example: 85 }
-        },
-        example: {  
-          name: 'Wireless Mouse',
-          description: 'Bluetooth ergonomic mouse',
-          price: 29.99,
-          stock: 100,
-          category: '60d5f3f3f3f3f3f3f3f3f3f3',
-          weight: 85
+          name: { type: 'string', example: 'iPhone 15' },
+          description: { type: 'string', example: 'Latest Apple smartphone' },
+          price: { type: 'number', example: 999.99 },
+          stock: { type: 'integer', example: 50 },
+          category: { type: 'string', example: '671f3e9e9d17d8c3e1234567' },
+          weight: { type: 'number', example: 180 }
         }
       },
       Category: {
@@ -37,11 +29,7 @@ const doc = {
         required: ['name'],
         properties: {
           name: { type: 'string', example: 'Electronics' },
-          description: { type: 'string', example: 'Phones and gadgets' }
-        },
-        example: {
-          name: 'Electronics',
-          description: 'Phones and gadgets'
+          description: { type: 'string', example: 'Phones, laptops, gadgets' }
         }
       }
     }
@@ -49,8 +37,8 @@ const doc = {
 };
 
 const outputFile = './swagger_output.json';
-const endpointsFiles = ['./routes/index.js'];
+const endpointsFiles = ['./routes/index.js'];  // MUST BE ARRAY
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-  console.log('swagger_output.json generated successfully!');
+  console.log('Swagger generated successfully!');
 });
