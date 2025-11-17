@@ -1,9 +1,5 @@
 ### Home - Check if API is live
 GET https://ecom-api-lcxh.onrender.com/
-
-### Swagger UI Documentation
-GET https://ecom-api-lcxh.onrender.com/api-docs
-
 ### Get All Categories
 GET https://ecom-api-lcxh.onrender.com/api/categories
 ### Get All Products 
