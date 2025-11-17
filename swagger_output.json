@@ -6,7 +6,7 @@
     "version": "1.0.0"
   },
   "host": "ecom-api-lcxh.onrender.com",
-  "basePath": "/api",
+  "basePath": "/",
   "schemes": [
     "https"
   ],

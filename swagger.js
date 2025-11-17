@@ -9,7 +9,7 @@ const doc = {
   },
   host: 'ecom-api-lcxh.onrender.com', 
   schemes: ['https'],
-  basePath: '/api',
+  // basePath: '/api',
   components: {
     schemas: {
       Product: {
