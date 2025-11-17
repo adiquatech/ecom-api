@@ -9,11 +9,11 @@ import { errorHandler } from './middleware/errorHandler.js';
 import { swaggerSpec, swaggerUi} from './swagger.js';
 
 import cors from 'cors';
-app.use(cors({ origin: '*' }));
 
 const app = express();
 app.use(express.json());
 app.use(attachResponseHelpers);
+app.use(cors({ origin: '*' }));
 
 // Home route
 app.get('/', (req, res) => {
@@ -27,11 +27,8 @@ app.use(cors());
 //Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-
 // Error Handler
 app.use(errorHandler);
-
-
 
 const PORT = process.env.PORT || 3000;
 const startServer = async () => {
