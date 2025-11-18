@@ -1,4 +1,4 @@
-// swagger.js  ← THIS IS THE WINNER
+// swagger.js
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
 
@@ -8,7 +8,7 @@ const options = {
     info: {
       title: 'E-commerce API - Week 3 & 4',
       version: '1.0.0',
-      description: 'Full CRUD API for Products and Categories',
+      description: 'Full CRUD API for 2 collections Products and Categories',
     },
     servers: [{ url: 'https://ecom-api-lcxh.onrender.com/api' }],
   },
