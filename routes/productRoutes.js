@@ -9,9 +9,12 @@ import {
 import { validateProduct } from '../middleware/validate.js';
 
 const router = express.Router();
-
 /**
  * @swagger
+ * tags:
+ *   - name: Products
+ *     description: Product endpoints
+ * 
  * /products:
  *   get:
  *     summary: Get all products
@@ -28,21 +31,31 @@ const router = express.Router();
  *         application/json:
  *           schema:
  *             type: object
- *             required: [name, description, price, stock, category]
+ *             required:
+ *               - name
+ *               - description
+ *               - price
+ *               - stock
+ *               - category
  *             properties:
- *               name: { type: string }
- *               description: { type: string }
- *               price: { type: number }
- *               stock: { type: integer }
- *               category: { type: string }
- *             example:
- *               name: "iPhone 16 Pro"
- *               description: "Latest Apple phone"
- *               price: 1299.99
- *               stock: 50
- *               category: "671f3e9e9d17d8c3e1234567"
+ *               name:
+ *                 type: string
+ *                 example: iPhone 16 Pro
+ *               description:
+ *                 type: string
+ *                 example: Latest Apple phone
+ *               price:
+ *                 type: number
+ *                 example: 1299.99
+ *               stock:
+ *                 type: integer
+ *                 example: 50
+ *               category:
+ *                 type: string
+ *                 example: 671f3e9e9d17d8c3e1234567
  *     responses:
- *       201: { description: Created }
+ *       201:
+ *         description: Product created
  *
  * /products/{id}:
  *   get:
@@ -52,8 +65,11 @@ const router = express.Router();
  *       - in: path
  *         name: id
  *         required: true
- *         schema: { type: string }
- *     responses: { 200: { description: Product } }
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Product found
  *   put:
  *     summary: Update product
  *     tags: [Products]
@@ -61,7 +77,8 @@ const router = express.Router();
  *       - in: path
  *         name: id
  *         required: true
- *         schema: { type: string }
+ *         schema:
+ *           type: string
  *     requestBody:
  *       required: true
  *       content:
@@ -69,10 +86,25 @@ const router = express.Router();
  *           schema:
  *             type: object
  *             properties:
- *               name: { type: string }
- *               price: { type: number }
- *     responses: { 200: { description: Updated } }
- *  <|eos|>
+ *               name:
+ *                 type: string
+ *               price:
+ *                 type: number
+ *     responses:
+ *       200:
+ *         description: Product updated
+ *   delete:
+ *     summary: Delete product
+ *     tags: [Products]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Product deleted
  */
 router.route('/')
   .get(getProducts)
