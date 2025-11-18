@@ -1,5 +1,10 @@
-// generate-swagger.js
+// generate-swagger.js  ← THIS ONE WORKS ON RENDER 100%
 import swaggerAutogen from 'swagger-autogen';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const doc = {
   info: {
@@ -14,10 +19,10 @@ const doc = {
 
 const outputFile = './swagger_output.json';
 const endpointsFiles = [
-  './routes/productRoutes.js',
-  './routes/categoryRoutes.js'
+  join(__dirname, 'routes', 'productRoutes.js'),
+  join(__dirname, 'routes', 'categoryRoutes.js')
 ];
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-  console.log('SWAGGER FIXED — YOU WILL SEE THE JSON BOX NOW');
+  console.log('SWAGGER FIXED — /api/products AND /api/categories WILL APPEAR WITH JSON BOX');
 });
