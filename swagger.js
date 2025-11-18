@@ -1,28 +1,21 @@
-// generate-swagger.js  ← FINAL VERSION THAT WORKS ON EVERY RENDER PROJECT
-import swaggerAutogen from 'swagger-autogen';
-import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
+// swagger.js  ← THIS IS THE WINNER
+import swaggerUi from 'swagger-ui-express';
+import swaggerJSDoc from 'swagger-jsdoc';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const doc = {
-  info: {
-    title: 'E-commerce API - Week 3 & 4',
-    description: 'Full CRUD API for Products and Categories',
-    version: '1.0.0',
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'E-commerce API - Week 3 & 4',
+      version: '1.0.0',
+      description: 'Full CRUD API for Products and Categories',
+    },
+    servers: [{ url: 'https://ecom-api-lcxh.onrender.com/api' }],
   },
-  host: 'ecom-api-lcxh.onrender.com',
-  schemes: ['https'],
-  basePath: '/api',
+  apis: ['./routes/productRoutes.js', './routes/categoryRoutes.js'],
 };
 
-const outputFile = './swagger_output.json';
-const endpointsFiles = [
-  resolve(__dirname, 'routes', 'productRoutes.js'),
-  resolve(__dirname, 'routes', 'categoryRoutes.js')
-];
+const swaggerSpec = swaggerJSDoc(options);
 
-swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-  console.log('SWAGGER 100% FIXED — YOU WILL SEE /api/products AND JSON BOX');
-});
+export default swaggerSpec;
+export { swaggerUi };

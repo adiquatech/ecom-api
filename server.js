@@ -6,7 +6,7 @@ import './models/index.js';
 import { attachResponseHelpers } from './utils/utils.js';
 import routes from './routes/index.js';
 import { errorHandler } from './middleware/errorHandler.js';
-import swaggerUi from 'swagger-ui-express';
+import swaggerSpec, { swaggerUi } from './swagger.js';
 import { createRequire } from 'module';
 
 import cors from 'cors';
@@ -31,7 +31,7 @@ app.use('/api', routes);
 app.use(cors());
 
 //Swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Error Handler
 app.use(errorHandler);
