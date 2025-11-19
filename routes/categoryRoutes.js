@@ -1,5 +1,11 @@
 import express from 'express';
-import { createCategory, getCategories } from '../controllers/categoryController.js';
+import {
+  createCategory,
+  getCategories,
+  getCategory,
+  updateCategory,
+  deleteCategory,
+} from '../controllers/categoryController.js';
 import { validateCategory } from '../middleware/validate.js';
 
 const router = express.Router();
@@ -9,7 +15,7 @@ const router = express.Router();
  * tags:
  *   - name: Categories
  *     description: Category endpoints
- * 
+ *
  * /categories:
  *   get:
  *     summary: Get all categories
@@ -17,6 +23,7 @@ const router = express.Router();
  *     responses:
  *       200:
  *         description: List of categories
+ *
  *   post:
  *     summary: Create a new category
  *     tags: [Categories]
@@ -26,8 +33,7 @@ const router = express.Router();
  *         application/json:
  *           schema:
  *             type: object
- *             required:
- *               - name
+ *             required: [name]
  *             properties:
  *               name:
  *                 type: string
@@ -38,9 +44,64 @@ const router = express.Router();
  *     responses:
  *       201:
  *         description: Category created
+ *
+ * /categories/{id}:
+ *   get:
+ *     summary: Get category by ID
+ *     tags: [Categories]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Category found
+ *
+ *   put:
+ *     summary: Update category by ID
+ *     tags: [Categories]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Category updated
+ *
+ *   delete:
+ *     summary: Delete category by ID
+ *     tags: [Categories]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Category deleted
  */
-router.route('/')
-  .get(getCategories)
-  .post(validateCategory, createCategory);
+router.route('/').get(getCategories).post(validateCategory, createCategory);
+
+router
+  .route('/:id')
+  .get(getCategory)
+  .put(validateCategory, updateCategory)
+  .delete(deleteCategory);
 
 export default router;

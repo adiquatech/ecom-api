@@ -11,3 +11,20 @@ export const getCategories = catchAsync(async (req, res) => {
   res.formattedSuccess(categories);
   // res.json({ success: true, count: categories.length, data: categories });
 });
+export const getCategory = catchAsync(async (req, res) => {
+  const categories = await category.findById(req.params.id);
+  res.formattedSuccess(categories);
+});
+
+export const updateCategory = catchAsync(async (req, res) => {
+  const categories = await category.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+  res.formattedSuccess(categories);
+});
+
+export const deleteCategory = catchAsync(async (req, res) => {
+  await category.findByIdAndDelete(req.params.id);
+  res.formattedSuccess({});
+});

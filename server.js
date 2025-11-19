@@ -7,15 +7,14 @@ import { attachResponseHelpers } from './utils/utils.js';
 import routes from './routes/index.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import swaggerSpec, { swaggerUi } from './swagger.js';
-import { createRequire } from 'module';
+// import { createRequire } from 'module';
 
 import cors from 'cors';
 
 const app = express();
 
-const require = createRequire(import.meta.url);
-const swaggerDocument = require('./swagger_output.json');
-
+// const require = createRequire(import.meta.url);
+// const swaggerDocument = require('./swagger_output.json');
 
 app.use(express.json());
 app.use(attachResponseHelpers);
@@ -41,17 +40,12 @@ const startServer = async () => {
   try {
     await connectDB();
     app.listen(PORT, () => {
-        console.log(`EcomAPI running on http://localhost:${PORT}`);
+      console.log(`EcomAPI running on http://localhost:${PORT}`);
     });
-
-  } catch (err){
+  } catch (err) {
     console.error('Server failed to start:', err.message);
     process.exit(1);
   }
 };
 
-
 startServer();
-
-
-

@@ -7,9 +7,7 @@
   },
   "host": "ecom-api-lcxh.onrender.com",
   "basePath": "/api",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "paths": {
     "/": {
       "get": {

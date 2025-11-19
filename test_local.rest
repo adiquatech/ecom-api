@@ -1,16 +1,30 @@
 ### Get All Categories
 GET http://localhost:3000/api/categories
-### Get All Products
-GET http://localhost:3000/api/products
-
 ### Create Category
 POST http://localhost:3000/api/categories
 Content-Type: application/json
 
 {
-  "name": "Electronics",
-  "description": "Devices and gadgets"
+  "name": "test-delete",
+  "description": "This is a test category for deletion"
 }
+### Get Single Category
+GET http://localhost:3000/api/categories/6919c090e5e13711d2f2369f
+### Update Category
+PUT http://localhost:3000/api/categories/691d7c50dc67ba35460f65e1
+Content-Type: application/json
+
+{
+  "name": "Updated",
+  "description": "Updated description for devices and gadgets"
+}
+### Delete Category
+DELETE http://localhost:3000/api/categories/691d7c50dc67ba35460f65e1
+
+
+
+### Get All Products
+GET http://localhost:3000/api/products
 ### Create Product
 POST http://localhost:3000/api/products
 Content-Type: application/json

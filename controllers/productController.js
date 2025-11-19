@@ -12,7 +12,9 @@ const productDetails = (product) => {
 };
 
 export const createProduct = catchAsync(async (req, res) => {
-  const product = await Product.create(req.body).then(p => p.populate('category'));
+  const product = await Product.create(req.body).then((p) =>
+    p.populate('category')
+  );
   res.formattedSuccess(productDetails(product), 201);
 });
 
@@ -29,11 +31,10 @@ export const getProduct = catchAsync(async (req, res) => {
 });
 
 export const updateProduct = catchAsync(async (req, res) => {
-  const product = await Product.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    { new: true, runValidators: true }
-  ).populate('category');
+  const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  }).populate('category');
 
   if (!product) notFound('product');
   res.formattedSuccess(productDetails(product));

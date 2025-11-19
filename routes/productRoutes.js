@@ -4,7 +4,7 @@ import {
   getProducts,
   getProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
 } from '../controllers/productController.js';
 import { validateProduct } from '../middleware/validate.js';
 
@@ -14,7 +14,7 @@ const router = express.Router();
  * tags:
  *   - name: Products
  *     description: Product endpoints
- * 
+ *
  * /products:
  *   get:
  *     summary: Get all products
@@ -106,11 +106,10 @@ const router = express.Router();
  *       200:
  *         description: Product deleted
  */
-router.route('/')
-  .get(getProducts)
-  .post(validateProduct, createProduct);
+router.route('/').get(getProducts).post(validateProduct, createProduct);
 
-router.route('/:id')
+router
+  .route('/:id')
   .get(getProduct)
   .put(validateProduct, updateProduct)
   .delete(deleteProduct);
