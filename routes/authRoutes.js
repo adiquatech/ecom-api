@@ -28,19 +28,12 @@ router.get('/logout', (req, res) => {
       res.send(`
         <h1>Logged Out Successfully</h1>
         <p>You are now fully logged out.</p>
-        <script>
-          localStorage.clear();
-          sessionStorage.clear();
-          setTimeout(() => { location.href = '/api-docs'; }, 800);
-        </script>
-        <p>Redirecting in 1 second...</p>
-        
+        <p><a href="/api/auth/login">Login Again</a></p>
+        <p><a href="/api-docs">Go to Swagger UI</a></p>
       `);
     });
   });
 });
-//<p><a href="/api/auth/login">Login Again</a></p>
-//<p><a href="/api-docs">Go to Swagger UI</a></p>
 
 // Google routes
 router.get(
