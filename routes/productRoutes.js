@@ -21,7 +21,7 @@ const router = express.Router();
  *     summary: Get all products
  *     tags: [Products]
  *     security:
- *      - googleOAuth2: []
+ *      - cookieAuth: []
  *     responses:
  *       200:
  *         description: List of products

@@ -22,7 +22,7 @@ const router = express.Router();
  *     summary: Get all categories
  *     tags: [Categories]
  *     security:
- *      - googleOAuth2: []
+ *      - cookieAuth: []
  *     responses:
  *       200:
  *         description: List of categories
