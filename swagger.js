@@ -23,7 +23,6 @@ const options = {
         },
       },
     },
-    security: [{ cookieAuth: [] }],
   },
   apis: [
     './routes/productRoutes.js',

@@ -17,7 +17,6 @@ router.get('/login', (req, res) => {
 router.get('/logout', (req, res) => {
   req.logout({ keepSessionInfo: false }, () => {
     req.session.destroy(() => {
-      // THIS LINE IS THE NUCLEAR BOMB FOR SWAGGER
       res.clearCookie('connect.sid', {
         path: '/',
         domain: '.onrender.com',

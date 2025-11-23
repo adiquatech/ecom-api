@@ -9,14 +9,10 @@ import { errorHandler } from './middleware/errorHandler.js';
 import swaggerSpec, { swaggerUi } from './swagger.js';
 import session from 'express-session';
 import passport from './config/passport.js';
-// import { createRequire } from 'module';
 
 import cors from 'cors';
 
 const app = express();
-
-// const require = createRequire(import.meta.url);
-// const swaggerDocument = require('./swagger_output.json');
 
 app.use(express.json());
 app.use(attachResponseHelpers);
@@ -28,7 +24,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false }, // set to true on Render (https)
+    cookie: { secure: false },
   })
 );
 
