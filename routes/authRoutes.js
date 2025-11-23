@@ -7,7 +7,7 @@ const router = express.Router();
 // Login page with links to Google OAuth and Swagger UI
 router.get('/login', (req, res) => {
   res.send(`
-    <h1>E-commerce API - Login</h1>
+    <h1>E-commerce API - Login Successfully</h1>
     <p><a href="/api/auth/google">Login with Google</a></p>
     <p><a href="/api-docs">Go to Swagger UI</a></p>
   `);
@@ -15,18 +15,40 @@ router.get('/login', (req, res) => {
 
 // Logout page that ends the session and provides links to login and Swagger UI
 router.get('/logout', (req, res) => {
-  req.logout(() => {
-    req.session.destroy(() => {
+  req.logout({ keepSessionInfo: false }, (err) => {
+    if (err) {
+      console.error('Logout error:', err);
+      return res.status(500).send('Logout failed');
+    }
+
+    // Destroy session completely
+    req.session.destroy((err) => {
+      if (err) {
+        /* empty */
+      }
+
+      // Clear the session cookie from browser
+      res.clearCookie('connect.sid', {
+        path: '/',
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+      });
+
+      // Success page
       res.send(`
         <h1>Logged Out Successfully</h1>
-        <p><a href="/api/auth/login">Login Again</a></p>
-        <p><a href="/api-docs">Back to Swagger</a></p>
+        <p>You are now fully logged out.</p>
+        <p>
+          <a href="/api/auth/login">Login Again</a> | 
+          <a href="/api-docs">Swagger UI (should show red lock)</a>
+        </p>
       `);
     });
   });
 });
 
-// Existing routes
+// Google routes
 router.get(
   '/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
