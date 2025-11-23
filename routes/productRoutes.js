@@ -7,6 +7,7 @@ import {
   deleteProduct,
 } from '../controllers/productController.js';
 import { validateProduct } from '../middleware/validate.js';
+import { isAuthenticated } from '../middleware/auth.js';
 
 const router = express.Router();
 /**
@@ -19,6 +20,8 @@ const router = express.Router();
  *   get:
  *     summary: Get all products
  *     tags: [Products]
+ *     security:
+ *      - googleOAuth2: []
  *     responses:
  *       200:
  *         description: List of products
@@ -110,8 +113,8 @@ router.route('/').get(getProducts).post(validateProduct, createProduct);
 
 router
   .route('/:id')
-  .get(getProduct)
-  .put(validateProduct, updateProduct)
+  .get(isAuthenticated, getProduct)
+  .put(isAuthenticated, validateProduct, updateProduct)
   .delete(deleteProduct);
 
 export default router;

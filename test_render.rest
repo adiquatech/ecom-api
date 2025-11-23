@@ -2,8 +2,8 @@
 GET https://ecom-api-lcxh.onrender.com/
 ### Get All Categories
 GET https://ecom-api-lcxh.onrender.com/api/categories
-### Get All Products 
-GET https://ecom-api-lcxh.onrender.com/api/products
+###Get Single Category (replace ID)
+GET https://ecom-api-lcxh.onrender.com/api/categories/691d982f031389ffe72ed12a
 ### Create a new Category
 POST https://ecom-api-lcxh.onrender.com/api/categories
 Content-Type: application/json
@@ -12,7 +12,21 @@ Content-Type: application/json
   "name": "Furniture",
   "description": "Tables, chairs, sofas and home furniture"
 }
+### Update Category - Full replace (PUT)
+PUT https://ecom-api-lcxh.onrender.com/api/categories/691d982f031389ffe72ed12a
+Content-Type: application/json
 
+{
+  "name": "Updated-Movies",
+  "description": "Updated description for movies"
+}
+### Delete Category
+DELETE https://ecom-api-lcxh.onrender.com/api/categories/
+
+
+
+### Get All Products 
+GET https://ecom-api-lcxh.onrender.com/api/products
 ### Create a new Product
 POST https://ecom-api-lcxh.onrender.com/api/products
 Content-Type: application/json
@@ -45,8 +59,5 @@ Content-Type: application/json
   "price": 2599.99,
   "stock": 12
 }
-
 ### Delete Product
 DELETE https://ecom-api-lcxh.onrender.com/api/products/6919c09de5e13711d2f236a1
-### Delete Category
-DELETE https://ecom-api-lcxh.onrender.com/api/categories/

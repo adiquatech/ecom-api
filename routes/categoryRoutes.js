@@ -7,6 +7,7 @@ import {
   deleteCategory,
 } from '../controllers/categoryController.js';
 import { validateCategory } from '../middleware/validate.js';
+import { isAuthenticated } from '../middleware/auth.js';
 
 const router = express.Router();
 
@@ -20,6 +21,8 @@ const router = express.Router();
  *   get:
  *     summary: Get all categories
  *     tags: [Categories]
+ *     security:
+ *      - googleOAuth2: []
  *     responses:
  *       200:
  *         description: List of categories
@@ -100,8 +103,8 @@ router.route('/').get(getCategories).post(validateCategory, createCategory);
 
 router
   .route('/:id')
-  .get(getCategory)
-  .put(validateCategory, updateCategory)
+  .get(isAuthenticated, getCategory)
+  .put(isAuthenticated, validateCategory, updateCategory)
   .delete(deleteCategory);
 
 export default router;

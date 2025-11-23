@@ -7,6 +7,8 @@ import { attachResponseHelpers } from './utils/utils.js';
 import routes from './routes/index.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import swaggerSpec, { swaggerUi } from './swagger.js';
+import session from 'express-session';
+import passport from './config/passport.js';
 // import { createRequire } from 'module';
 
 import cors from 'cors';
@@ -19,6 +21,19 @@ const app = express();
 app.use(express.json());
 app.use(attachResponseHelpers);
 app.use(cors({ origin: '*' }));
+
+// Session middleware
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false }, // set to true on Render (https)
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Home route
 app.get('/', (req, res) => {
