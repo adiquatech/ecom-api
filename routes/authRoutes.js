@@ -15,29 +15,19 @@ router.get('/login', (req, res) => {
 
 // Logout page that ends the session and provides links to login and Swagger UI
 router.get('/logout', (req, res) => {
-  req.logout({ keepSessionInfo: false }, (err) => {
-    if (err) {
-      console.error('Logout error:', err);
-      return res.status(500).send('Logout failed');
-    }
-
-    // Destroy session completely
-    req.session.destroy((err) => {
-      if (err) {
-        /* empty */
-      }
-
-      // Clear the session cookie from browser
+  req.logout({ keepSessionInfo: false }, () => {
+    req.session.destroy(() => {
+      // THIS LINE IS THE NUCLEAR BOMB FOR SWAGGER
       res.clearCookie('connect.sid', {
         path: '/',
+        domain: '.onrender.com',
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
+        secure: true,
+        sameSite: 'lax'
       });
 
-      // Success page
       res.send(`
-        <h1>Logged Out Successfully</h1>
+        h1>Logged Out Successfully</h1>
         <p>You are now fully logged out.</p>
         <p><a href="/api/auth/login">Login Again</a></p>
         <p><a href="/api-docs">Go to Swagger UI</a></p>
