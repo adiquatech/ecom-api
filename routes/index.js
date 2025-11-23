@@ -6,7 +6,7 @@ import authRoutes from './authRoutes.js';
 
 const router = express.Router();
 
-router.use('/authRoutes', authRoutes);
+router.use('/auth', authRoutes);
 router.use('/products', productRoutes);
 router.use('/categories', categoryRoutes);
 
