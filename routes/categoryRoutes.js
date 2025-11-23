@@ -97,12 +97,15 @@ const router = express.Router();
  *       200:
  *         description: Category deleted
  */
-router.route('/').get(getCategories).post(validateCategory, createCategory);
+router
+  .route('/')
+  .get(getCategories)
+  .post(isAuthenticated, validateCategory, createCategory);
 
 router
   .route('/:id')
   .get(isAuthenticated, getCategory)
   .put(isAuthenticated, validateCategory, updateCategory)
-  .delete(deleteCategory);
+  .delete(isAuthenticated, deleteCategory);
 
 export default router;

@@ -107,12 +107,15 @@ const router = express.Router();
  *       200:
  *         description: Product deleted
  */
-router.route('/').get(getProducts).post(validateProduct, createProduct);
+router
+  .route('/')
+  .get(getProducts)
+  .post(isAuthenticated, validateProduct, createProduct);
 
 router
   .route('/:id')
   .get(isAuthenticated, getProduct)
   .put(isAuthenticated, validateProduct, updateProduct)
-  .delete(deleteProduct);
+  .delete(isAuthenticated, deleteProduct);
 
 export default router;
