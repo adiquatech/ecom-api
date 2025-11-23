@@ -20,8 +20,6 @@ const router = express.Router();
  *   get:
  *     summary: Get all products
  *     tags: [Products]
- *     security:
- *      - cookieAuth: []
  *     responses:
  *       200:
  *         description: List of products

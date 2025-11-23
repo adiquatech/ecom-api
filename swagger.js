@@ -14,15 +14,6 @@ const options = {
       { url: 'https://ecom-api-lcxh.onrender.com/api' },
       { url: 'http://localhost:3000/api' },
     ],
-    components: {
-      securitySchemes: {
-        cookieAuth: {
-          type: 'apiKey',
-          in: 'cookie',
-          name: 'connect.sid',
-        },
-      },
-    },
   },
   apis: [
     './routes/productRoutes.js',

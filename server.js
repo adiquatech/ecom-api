@@ -41,7 +41,15 @@ app.use('/api', routes);
 app.use(cors());
 
 //Swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(
+  '/api-docs',
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, {
+    swaggerOptions: {
+      persistAuthorization: false,
+    },
+  })
+);
 
 // Error Handler
 app.use(errorHandler);
