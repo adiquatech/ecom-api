@@ -40,7 +40,7 @@ router.get('/logout', (req, res) => {
         <h1>Logged Out Successfully</h1>
         <p>You are now fully logged out.</p>
         <p><a href="/api/auth/login">Login Again</a></p>
-        <p><a href="/api-docs">Go to Swagger UI (should show red lock)</a></p>
+        <p><a href="/api-docs">Go to Swagger UI</a></p>
       `);
     });
   });
