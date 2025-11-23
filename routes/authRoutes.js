@@ -7,7 +7,7 @@ const router = express.Router();
 // Login page with links to Google OAuth and Swagger UI
 router.get('/login', (req, res) => {
   res.send(`
-    <h1>E-commerce API - Login Successful ✅</h1>
+    <h1>E-commerce API - Login</h1>
     <p><a href="/api/auth/google">Login with Google</a></p>
     <p><a href="/api-docs">Go to Swagger UI</a></p>
   `);
